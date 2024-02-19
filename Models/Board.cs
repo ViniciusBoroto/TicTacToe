@@ -30,6 +30,7 @@ namespace TicTacToe.Models
 
         public void ShowBoard()
         {
+            Console.Clear();
             Console.WriteLine("\t  1    2    3 ");
             for (int i = 0; i < 3; i++)
             {
