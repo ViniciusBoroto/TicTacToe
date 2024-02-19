@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -30,6 +31,124 @@ namespace TicTacToe.Models
             }
             GameBoard.MakeMove(position, player);
             _player = _player == "X" ? "Y" : "X";
+        }
+        private string? CheckWinner()
+        {
+            string currentPos;
+            int xCount;
+            int yCount;
+            //Lines
+            for (int i = 0; i < 3; i++)
+            {
+                //Verificando a linha
+                xCount = 0;
+                yCount = 0;
+                for (int j = 0; j < 3; j++)
+                {
+                    //Verificando cada elemento da linha
+                    currentPos = GameBoard.GetBoard()[i, j];
+                    if (currentPos == " ") { break; }
+                    if (currentPos == "X")
+                    {
+                        xCount++;
+                    }
+                    else
+                    {
+                        yCount++;
+                    }
+                }
+                if (xCount == 3)
+                {
+                    return "X";
+                }
+                else if (yCount == 3)
+                {
+                    return "Y";
+                }
+            }
+            //columns
+            for (int j = 0; j < 3; j++)
+            {
+                //Verificando a coluna
+                xCount = 0;
+                yCount = 0;
+                for (int i = 0; i < 3; i++)
+                {
+                    //Verificando cada elemento da coluna
+                    currentPos = GameBoard.GetBoard()[i, j];
+                    if (currentPos == " ") { break; }
+                    if (currentPos == "X")
+                    {
+                        xCount++;
+                    }
+                    else
+                    {
+                        yCount++;
+                    }
+                }
+                if (xCount == 3)
+                {
+                    return "X";
+                }
+                else if (yCount == 3)
+                {
+                    return "Y";
+                }
+            }
+
+            //diagonal \
+            xCount = 0;
+            yCount = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                currentPos = GameBoard.GetBoard()[i, i];
+                if (currentPos == " ") { break; }
+                if (currentPos == "X")
+                {
+                    xCount++;
+                }
+                else
+                {
+                    yCount++;
+                }
+                if (xCount == 3)
+                {
+                    return "X";
+                }
+                else if (yCount == 3)
+                {
+                    return "Y";
+                }
+            }
+
+            //diagonal /
+            xCount = 0;
+            yCount = 0;
+            for (int i = 0; i < 3; i++)
+            {
+
+                currentPos = GameBoard.GetBoard()[i, 2 - i];
+                if (currentPos == " ") { break; }
+                if (currentPos == "X")
+                {
+                    xCount++;
+                }
+                else
+                {
+                    yCount++;
+                }
+            }
+            if (xCount == 3)
+            {
+                return "X";
+            }
+            else if (yCount == 3)
+            {
+                return "Y";
+            }
+
+
+            return null;
         }
     }
 }
