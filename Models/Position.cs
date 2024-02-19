@@ -17,18 +17,18 @@ namespace TicTacToe.Models
             {
                 throw new Exception("Invalid position, select a free position between a1-c3");
             }
-            string[] pos = position.Split("");
-            row = char.Parse(pos[0]) - 'a';
-            column = int.Parse(pos[1]) - 1;
+            char[] pos = position.ToCharArray();
+            row = char.Parse(pos[0].ToString().ToLower()) - 'a';
+            column = (char)pos[1] - '1';
         }
         public static bool ValidatePosition(string position)
         {
             // return true;
-            string[] p = position.Split("");
+            char[] p = position.ToCharArray();
             if (p.Length == 2)
             {
-                char row = char.Parse(p[0]);
-                char col = char.Parse(p[1]);
+                char row = char.Parse(p[0].ToString().ToLower());
+                char col = p[1];
                 if (row >= 'a' && row <= 'c'
                     && col >= '1' && col <= '3')
                 {

@@ -18,11 +18,11 @@ namespace TicTacToe.Models
             _player = "X";
         }
         /// <summary>
-        /// Verify if the position is free, makes the move and change the current player
+        /// Verify if the position is free, makes the move and change the current player.
         /// </summary>
         /// <param name="position"></param>
         /// <exception cref="Exception"></exception>
-        public void MakeMove(Position position)
+        public bool MakeMove(Position position)
         {
             //Verifica se a posição está vazia
             if (GameBoard.GetBoard()[position.Row, position.Column] != " ")
@@ -31,8 +31,9 @@ namespace TicTacToe.Models
             }
             GameBoard.MakeMove(position, player);
             _player = _player == "X" ? "Y" : "X";
+            return true;
         }
-        private string? CheckWinner()
+        public string? CheckWinner()
         {
             string currentPos;
             int xCount;
