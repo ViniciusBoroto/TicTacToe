@@ -33,7 +33,7 @@ namespace TicTacToe.Models
             Console.WriteLine("\t  1    2    3 ");
             for (int i = 0; i < 3; i++)
             {
-                Console.WriteLine($"\t{(char)('a' + i)}{board[i, 0]}  |  {board[i, 1]}  |  {board[i, 2]}");
+                Console.WriteLine($"\t{(char)('a' + i)} {board[i, 0]} |  {board[i, 1]}  |  {board[i, 2]}");
                 if (i < 2)
                 {
                     Console.WriteLine("\t ---|-----|---");
