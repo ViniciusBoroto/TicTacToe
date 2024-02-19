@@ -13,12 +13,13 @@ namespace TicTacToe.Models
         public int Column { get => column; }
         public Position(string position)
         {
-            if (ValidatePosition(position))
+            if (!ValidatePosition(position))
             {
-                string[] pos = position.Split("");
-                row = char.Parse(pos[0]) - 'a';
-                column = int.Parse(pos[1]) - 1;
+                throw new Exception("Invalid position, select a free position between a1-c3");
             }
+            string[] pos = position.Split("");
+            row = char.Parse(pos[0]) - 'a';
+            column = int.Parse(pos[1]) - 1;
         }
         public static bool ValidatePosition(string position)
         {

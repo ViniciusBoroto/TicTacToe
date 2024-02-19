@@ -42,10 +42,6 @@ namespace TicTacToe.Models
         }
         public void MakeMove(Position position, string player)
         {
-            if (board[position.Row, position.Column] != " ")
-            {
-                throw new Exception("This space has already been selected, choose a free one");
-            }
             board[position.Row, position.Column] = player;
         }
     }
