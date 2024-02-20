@@ -2,6 +2,7 @@
 
 Match match = new Match(new Board());
 string? winner = null;
+int rounds = 0;
 while (winner == null)
 {
     try
@@ -16,6 +17,12 @@ while (winner == null)
         else
         {
             match.MakeMove(new Position(pos));
+            rounds++;
+            if (rounds == 9)
+            {
+                winner = null;
+                break;
+            }
         }
     }
     catch (Exception e)
@@ -26,5 +33,14 @@ while (winner == null)
     }
     winner = match.CheckWinner();
 }
-match.GameBoard.ShowBoard();
-Console.WriteLine($"Congratulations Player {winner}, you won!!!");
+if (winner == null)
+{
+    match.GameBoard.ShowBoard();
+    Console.WriteLine("Draw!!!");
+}
+else
+{
+    match.GameBoard.ShowBoard();
+    Console.WriteLine($"Congratulations Player {winner}, you won!!!");
+}
+
