@@ -15,7 +15,7 @@ namespace TicTacToe.Models
         {
             if (!ValidatePosition(position))
             {
-                throw new Exception("Invalid position, select a free position between a1-c3");
+                throw new Exception("Invalid position, select a empty position between a1-c3");
             }
             char[] pos = position.ToCharArray();
             row = char.Parse(pos[0].ToString().ToLower()) - 'a';
